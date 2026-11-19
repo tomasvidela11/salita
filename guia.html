@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guía para probar Salita.</title>
+  <meta name="color-scheme" content="light">
+  <link rel="icon" href="icono.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root { --tinta: #22405c; --suave: #5b7488; --celeste: #1d7db5; --celeste-claro: #e6f6fd; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Nunito', system-ui, sans-serif; color: var(--tinta); background: #eaf5fb; line-height: 1.4; }
+    .hoja { max-width: 820px; margin: 24px auto; background: #fff; border-radius: 24px; padding: 32px; box-shadow: 0 10px 40px rgba(34, 64, 92, .12); }
+    header { display: flex; gap: 24px; align-items: center; }
+    header .textos { flex: 1; }
+    .marca { display: flex; align-items: center; gap: 12px; }
+    .marca img { width: 56px; height: 56px; border-radius: 16px; }
+    .marca span { font-size: 40px; font-weight: 900; letter-spacing: -1px; }
+    .punto { color: #f07878; }
+    h1 { font-size: 26px; margin: 8px 0 4px; font-weight: 900; }
+    .sub { color: var(--suave); font-weight: 700; margin: 0; }
+    .qr { flex: none; width: 190px; text-align: center; }
+    .qr #codigo { background: #fff; border: 3px solid #d4effc; border-radius: 18px; padding: 10px; }
+    .qr #codigo svg { width: 100%; height: auto; display: block; }
+    .qr small { display: block; margin-top: 6px; font-weight: 800; color: var(--suave); word-break: break-all; font-size: 12px; }
+    h2 { font-size: 20px; font-weight: 900; margin: 28px 0 10px; }
+    ol.pasos { margin: 0; padding-left: 22px; font-size: 17px; font-weight: 700; }
+    ol.pasos li { margin-bottom: 6px; }
+    .roles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .rol { border-radius: 18px; padding: 14px 16px; }
+    .rol h3 { margin: 0 0 8px; font-size: 18px; font-weight: 900; }
+    .rol ul { margin: 0; padding-left: 18px; font-size: 15px; font-weight: 600; }
+    .rol li { margin-bottom: 6px; }
+    .docente { background: #ffe1ea; }
+    .familia { background: #e6f6fd; }
+    .direccion { background: #dbf5e0; }
+    .tips { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .tip { background: #fff8e1; border-radius: 16px; padding: 12px 14px; font-size: 15px; font-weight: 600; }
+    .tip strong { display: block; font-weight: 900; margin-bottom: 2px; }
+    .imprimir { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; border: 0; border-radius: 14px; padding: 12px 20px; background: var(--celeste); color: #fff; font: inherit; font-weight: 800; font-size: 16px; cursor: pointer; }
+    @media (max-width: 700px) {
+      .hoja { margin: 0; border-radius: 0; padding: 20px 16px; }
+      header { flex-direction: column-reverse; align-items: flex-start; }
+      .roles, .tips { grid-template-columns: 1fr; }
+    }
+    @media print {
+      @page { size: A4; margin: 12mm; }
+      body { background: #fff; }
+      .hoja { margin: 0; padding: 0; box-shadow: none; max-width: none; }
+      .imprimir { display: none; }
+      .rol, .tip { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      h2 { margin-top: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="hoja">
+    <header>
+      <div class="textos">
+        <div class="marca"><img src="icono-192.png" alt=""><span>Salita<span class="punto">.</span></span></div>
+        <h1>Guía para probar la app</h1>
+        <p class="sub">Comunicación entre docentes, familias y dirección · Sala Roja - Turno Tarde</p>
+      </div>
+      <div class="qr">
+        <div id="codigo"></div>
+        <small id="enlace"></small>
+      </div>
+    </header>
+
+    <h2>1. Entrar</h2>
+    <ol class="pasos">
+      <li>Apuntá la cámara del celular al código QR (o escribí el link que está abajo del código).</li>
+      <li>Elegí tu perfil: <strong>Docente</strong>, <strong>Familia</strong> o <strong>Dirección</strong>.</li>
+      <li>Para probar bien, lo ideal es usar 2 o 3 celulares, cada uno con un perfil distinto: lo que hace uno le aparece al otro al instante.</li>
+    </ol>
+
+    <h2>2. Qué probar en cada perfil</h2>
+    <div class="roles">
+      <section class="rol docente">
+        <h3>🍎 Docente</h3>
+        <ul>
+          <li>Comunicación → tocá una plantilla rápida y enviá el comunicado.</li>
+          <li>Tocá el interruptor para cerrar y abrir el horario de consultas.</li>
+          <li>Banco de Actividades → abrí una guía y mirá en qué cajón está cada material.</li>
+          <li>Subí una actividad nueva con una foto.</li>
+          <li>Gestión Interna → pedí plasticola y confirmá el aviso de Dirección.</li>
+        </ul>
+      </section>
+      <section class="rol familia">
+        <h3>👨‍👩‍👧 Familia</h3>
+        <ul>
+          <li>Mirá el comunicado nuevo y tocá "Marcar como leído": a la seño le sube el contador de vistos.</li>
+          <li>Consultas → escribile a la seño.</li>
+          <li>Con el horario cerrado, el mensaje queda en espera hasta que la seño abra el horario.</li>
+        </ul>
+      </section>
+      <section class="rol direccion">
+        <h3>🏫 Dirección</h3>
+        <ul>
+          <li>Panel General → marcá como repuesto el pedido de stock de la seño.</li>
+          <li>Mirá los reportes de sala.</li>
+          <li>Avisos a Docentes → mandá un aviso y agregá una fecha al calendario.</li>
+        </ul>
+      </section>
+    </div>
+
+    <h2>3. Para tener en cuenta</h2>
+    <div class="tips">
+      <div class="tip"><strong>🔄 Cambiar de perfil</strong>Tocá 👤 Perfil (abajo a la derecha) → "Cambiar de rol".</div>
+      <div class="tip"><strong>♻️ Antes de presentar</strong>Perfil → "Reiniciar demo" borra todo lo de las pruebas y deja los datos de ejemplo.</div>
+      <div class="tip"><strong>📲 Instalarla (iPhone)</strong>En Safari: botón Compartir ⬆️ → "Agregar a pantalla de inicio".</div>
+      <div class="tip"><strong>📲 Instalarla (Android)</strong>En Chrome: menú ⋮ → "Instalar aplicación".</div>
+      <div class="tip"><strong>🔒 Es una demo pública</strong>No cargues datos reales ni fotos donde se vean caras de chicos.</div>
+      <div class="tip"><strong>🔔 Avisos</strong>Las novedades llegan con un cartelito mientras la app está abierta.</div>
+    </div>
+
+    <button class="imprimir" onclick="window.print()">🖨️ Imprimir esta guía</button>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  <script>
+    // El QR apunta a la app, en la misma dirección donde está publicada esta guía.
+    var url = new URL('./', location.href).href;
+    document.getElementById('enlace').textContent = url.replace(/^https?:\/\//, '');
+    try {
+      var qr = qrcode(0, 'M');
+      qr.addData(url);
+      qr.make();
+      document.getElementById('codigo').innerHTML = qr.createSvgTag(6, 0);
+    } catch (e) {
+      document.getElementById('codigo').textContent = 'Entrá a: ' + url;
+    }
+  </script>
+</body>
+</html>

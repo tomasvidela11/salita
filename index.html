@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <title>Salita.</title>
+  <meta name="description" content="Salita. Comunicación entre docentes, familias y dirección del jardín (demo).">
+  <meta name="theme-color" content="#f2faff">
+  <meta name="color-scheme" content="light">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icono.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icono-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Salita">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/htm@3.1.1/preact/standalone.module.js">
+</head>
+<body>
+  <div id="app">
+    <div class="arranque">
+      <div class="arranque-logo">Salita<span class="punto">.</span></div>
+      <div class="ruedita"></div>
+      <p>Cargando…</p>
+    </div>
+  </div>
+  <noscript>Para usar Salita hay que tener JavaScript activado.</noscript>
+  <script type="module" src="app.js"></script>
+  <script>
+    // Si la app no arrancó en 15 segundos (sin internet, por ejemplo), lo avisamos.
+    setTimeout(function () {
+      if (window.salitaLista) return;
+      document.getElementById('app').innerHTML =
+        '<div class="arranque"><div class="arranque-logo">Salita<span class="punto">.</span></div>' +
+        '<p class="problema">No se pudo cargar la app. Revisá la conexión a internet.</p>' +
+        '<button class="btn btn-primario" onclick="location.reload()">Reintentar</button></div>';
+    }, 15000);
+  </script>
+</body>
+</html>
